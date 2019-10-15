@@ -183,7 +183,7 @@ public class Tank extends GameObject{
     public int getHEIGHT() {
         return HEIGHT;
     }
-    private List<TankFireObserver> fireObservers = Arrays.asList(new TankFireHandler());
+    private  List<TankFireObserver> fireObservers = Arrays.asList(new TankFireHandler());
     public void handleFireKey() {
         TankFireEven even = new TankFireEven(this);
         for (TankFireObserver o : fireObservers){

@@ -3,6 +3,13 @@ package zhj;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,6 +79,28 @@ public class GameModel {
 
         return myTk;
 
+    }
+    public void save(){
+        File f = new File("I:\\xz\\tank.date");
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
+            oos.writeObject(myTk);
+            oos.writeObject(objects);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void load(){
+        File f = new File("I:\\xz\\tank.date");
+        try {
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+            myTk = (Tank) ois.readObject();
+            objects = (List)ois.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 }

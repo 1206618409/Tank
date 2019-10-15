@@ -1,6 +1,8 @@
 package zhj;
 
-public interface TankFireObserver {
+import java.io.Serializable;
+
+public interface TankFireObserver extends Serializable {
     void actionOnFire(TankFireEven e);
 
 }
